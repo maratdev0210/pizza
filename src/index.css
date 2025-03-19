@@ -1,1 +1,32 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: "Dodo";
+  src: url("../public/fonts/d038e09b3a73d925def3..woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Dodo";
+  src: url("../public/fonts/d038e09b3a73d925def3..woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f0f0f0;
+  border-radius: 10px;
+  border: 2px solid #f0f0f0;
+}
+
+:root {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Dodo";
+}

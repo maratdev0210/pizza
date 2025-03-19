@@ -1,7 +1,9 @@
+import RegionModal from "./widgets/RegionModal/RegionModal";
+
 function App() {
   return (
     <>
-      <div></div>
+      <RegionModal />
     </>
   );
 }
