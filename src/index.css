@@ -28,5 +28,52 @@
 :root {
   padding: 0px;
   margin: 0px;
+  height: 200vh;
   font-family: "Dodo";
+}
+
+/* change the text on hover */
+.dodo-hover {
+  @apply hover:text-orange-500 hover:transition hover:delay-75 cursor-pointer;
+}
+
+/* applies for all of the body elements */
+.dodo-padding-left {
+  @apply px-[calc((100%-960px)/2)] xl:px-[calc((100%-1280px)/2)];
+}
+
+@theme {
+  --animate-live-pulse: live-pulse 2s ease-in-out infinite;
+  --animate-logo-appear: logo-appear 0.5s ease-in-out;
+  --animate-logo-disappear: logo-disappear 0.5s ease-in-out forwards;
+
+  @keyframes live-pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes logo-appear {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  @keyframes logo-disappear {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
 }

@@ -257,3 +257,4 @@ const REGIONS: AlphabeticalRegion[] = [
 ];
 
 export { REGIONS };
+export type { AlphabeticalRegion };
