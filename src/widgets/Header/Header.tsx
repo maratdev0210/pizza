@@ -1,6 +1,7 @@
 import { products } from "../../types/widgets/header/header";
 import logo from "../../../public/logo.svg";
 import OtherProducts from "./helpers/OtherProducts";
+import PizzeriaInfo from "./PizzeriaInfo";
 import { useState } from "react";
 
 export default function Header() {
@@ -12,10 +13,11 @@ export default function Header() {
 
   return (
     <>
+      <PizzeriaInfo city="Королев" />
       <div
-        className={`${sticky ? "fixed -top-10 z-10 bg-white/75 shadow-xl" : ""} dodo-padding-left w-full`}
+        className={`${sticky ? "fixed -top-5 z-10 bg-white/75 shadow-xl" : ""} dodo-padding-left w-full`}
       >
-        <div className={`mt-10 flex items-center justify-between`}>
+        <div className={`mt-4 flex items-center justify-between`}>
           <nav
             className={`flex w-full  h-15 backdrop-blur-xl items-center overflow-auto md:overflow-hidden`}
           >
