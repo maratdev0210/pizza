@@ -1,6 +1,7 @@
 // opens on user click
 import { useEffect, useRef } from "react";
 import Phone from "./Phone";
+import { X } from "lucide-react";
 
 interface LoginProps {
   showLogin: boolean;
@@ -25,12 +26,17 @@ export default function LoginModal({ showLogin, setShowLogin }: LoginProps) {
 
   return (
     <div
-      className={`${showLogin ? "fixed inset-0 flex items-center justify-center w-full h-[100vh] bg-black/50 z-10000" : "hidden"}`}
+      className={`${showLogin ? "fixed inset-0 flex items-center justify-center w-full h-[100vh] bg-black/75 z-10000" : "hidden"}`}
     >
-      <div>
+      <div className="relative">
+        <div className="absolute hover:scale-115 hover:duration-200  cursor-pointer translate-x-full top-8 -right-3 rounded-full bg-white">
+          <span>
+            <X className="size-11 p-2" />
+          </span>
+        </div>
         <div
           ref={loginRef}
-          className="w-105 h-80 px-4 py-6 rounded-xl bg-white"
+          className="w-105 h-auto px-4 py-6 rounded-3xl bg-white"
         >
           <p className="text-center text-2xl text-black font-semibold">
             Вход на сайт
@@ -40,6 +46,15 @@ export default function LoginModal({ showLogin, setShowLogin }: LoginProps) {
             расскажем об акциях
           </p>
           <Phone />
+          <div className="mt-6">
+            <p className="text-center mx-auto text-xs w-9/10 text-gray-400">
+              Продолжая, вы соглашаетесь{" "}
+              <span className="text-orange-500">
+                со сбором и обработкой персональных данных и пользовательским
+                соглашением
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </div>

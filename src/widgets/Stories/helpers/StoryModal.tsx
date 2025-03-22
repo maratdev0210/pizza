@@ -1,5 +1,4 @@
 import { X } from "lucide-react";
-import { useEffect } from "react";
 
 interface StoryImage {
   showStory: boolean;
@@ -14,14 +13,6 @@ export default function StoryModal({
   setShowStory,
   image,
 }: StoryImage) {
-  /*
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, []); */
-
   return (
     <div className={`${showStory ? "fixed inset-0 z-50" : "hidden"}`}>
       <div className="fixed inset-0 w-full h-[100vh] flex justify-center items-center bg-black/80 backdrop-blur-2xl ">
@@ -33,7 +24,7 @@ export default function StoryModal({
                   <span className="h-1 rounded-lg bg-gray-100/40 inline-block"></span>
                   <span
                     style={{ animationDelay: String(index + 4 * index) + "s" }}
-                    className="animate-story w-0 h-1 rounded-lg bg-gray-100/40 block"
+                    className="animate-story w-0 h-1 rounded-lg bg-white block"
                   ></span>
                 </div>
               );

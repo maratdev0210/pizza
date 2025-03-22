@@ -47,11 +47,36 @@
   @apply px-[calc((100%-960px)/2)] xl:px-[calc((100%-1280px)/2)];
 }
 
+.cookies-message {
+  box-shadow: 0px 6px 20px rgba(6, 5, 50, 0.1);
+}
+
 @theme {
   --animate-live-pulse: live-pulse 2s ease-in-out infinite;
   --animate-logo-appear: logo-appear 0.5s ease-in-out;
   --animate-logo-disappear: logo-disappear 0.5s ease-in-out forwards;
   --animate-story: story 4s forwards;
+  --animate-hide-cart: cart-hide 0.5s ease-in-out forwards;
+  --animate-cart-appear: cart-appear 0.5s ease-in-out forwards;
+
+  @keyframes cart-appear {
+    0% {
+      transform: translateX(150%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  @keyframes cart-hide {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(150%);
+      display: hidden;
+    }
+  }
 
   @keyframes story {
     0% {
@@ -63,7 +88,7 @@
     100% {
       transform: translateX(0px);
       width: 85px;
-      background-color: var(--color-gray-400);
+      background-color: white;
       position: relative;
       bottom: 4px;
     }
