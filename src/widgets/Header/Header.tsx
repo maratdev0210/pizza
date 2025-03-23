@@ -4,10 +4,13 @@ import OtherProducts from "./helpers/OtherProducts";
 import PizzeriaInfo from "./PizzeriaInfo";
 import CartPopup from "./helpers/CartPopup";
 import { useState } from "react";
+import { useAppSelector } from "../../state/hooks";
+import { selectedCity } from "../../state/slices/citiesSlice";
 
 export default function Header() {
   const [sticky, setSticky] = useState(false);
   const [showCart, setShowCart] = useState(false);
+  const city = useAppSelector(selectedCity);
 
   window.addEventListener("scroll", () => {
     setSticky(window.scrollY >= 100);
@@ -15,7 +18,7 @@ export default function Header() {
 
   return (
     <>
-      <PizzeriaInfo city="Королев" />
+      <PizzeriaInfo city={city} />
       <div
         className={`${sticky ? "fixed -top-5 z-10 bg-white/75 shadow-xl" : ""} dodo-padding-left w-full`}
       >
