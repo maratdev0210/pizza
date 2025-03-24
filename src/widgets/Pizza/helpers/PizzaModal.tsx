@@ -1,4 +1,5 @@
 // Display more information about the pizza
+
 interface IPizzaModal {
   name: string;
   image: string;
@@ -10,6 +11,7 @@ interface IPizzaModal {
 import { useEffect, useState } from "react";
 import ToppingsList from "./ToppingsList";
 import { X } from "lucide-react";
+import SizePicking from "./SizePicking";
 
 export default function PizzaModal({
   name,
@@ -18,6 +20,8 @@ export default function PizzaModal({
   showModal,
   setShowModal,
 }: IPizzaModal) {
+  const [imageScale, setImageScale] = useState<number>(150);
+
   useEffect(() => {
     if (showModal) {
       document.body.style.overflow = "hidden";
@@ -44,6 +48,10 @@ export default function PizzaModal({
               <div className="pl-12 pb-2 pr-1 flex flex-col items-center justify-center w-1/2 rounded-r-2xl rounded-br-2xl bg-gray-50">
                 <div className="mt-8 py-8 overflow-auto">
                   <p className="px-4 font-semibold text-2xl">{name}</p>
+                  <div className="px-4 mr-12 mt-6">
+                    <SizePicking setImageScale={setImageScale} />
+                  </div>
+
                   <ToppingsList />
                 </div>
                 <div className="mt-8 pb-12 w-full pr-12">

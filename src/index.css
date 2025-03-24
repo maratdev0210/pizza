@@ -55,6 +55,26 @@
   box-shadow: rgba(6, 5, 50, 0.12) 0px 4px 20px;
 }
 
+/* custom label styles for radio */
+.radio-style {
+  flex: 1 1 0%;
+  line-height: 32px;
+  height: 32px;
+  user-select: none;
+}
+
+/* custom radio styles */
+.custom-radio {
+  position: absolute;
+  padding: 2px;
+  height: 32px;
+  width: 110px;
+  display: block;
+  background-color: rgb(255, 255, 255);
+  border-radius: 9999px;
+  box-shadow: rgba(6, 5, 50, 0.19) 0px 6px 20px;
+}
+
 @theme {
   --animate-live-pulse: live-pulse 2s ease-in-out infinite;
   --animate-logo-appear: logo-appear 0.5s ease-in-out;
@@ -62,6 +82,72 @@
   --animate-story: story 4s forwards;
   --animate-hide-cart: cart-hide 0.5s ease-in-out forwards;
   --animate-cart-appear: cart-appear 0.5s ease-in-out forwards;
+  --animate-size-change-smallMedium: size-change-smallMedium 0.2s ease-out
+    forwards;
+  --animate-size-change-mediumLarge: size-change-mediumLarge 0.2s ease-out
+    forwards;
+  --animate-size-change-largeMedium: size-change-largeMedium 0.2s ease-out
+    forwards;
+  --animate-size-change-mediumSmall: size-change-mediumSmall 0.2s ease-out
+    forwards;
+  --animate-size-change-smallLarge: size-change-smallLarge 0.2s ease-out
+    forwards;
+  --animate-size-change-largeSmall: size-change-largeSmall 0.2s ease-out
+    forwards;
+
+  @keyframes size-change-smallMedium {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(105%);
+    }
+  }
+
+  @keyframes size-change-mediumLarge {
+    0% {
+      transform: translateX(105%);
+    }
+    100% {
+      transform: translateX(210%);
+    }
+  }
+
+  @keyframes size-change-largeMedium {
+    0% {
+      transform: translateX(210%);
+    }
+    100% {
+      transform: translateX(105%);
+    }
+  }
+
+  @keyframes size-change-mediumSmall {
+    0% {
+      transform: translateX(105%);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
+
+  @keyframes size-change-smallLarge {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(210%);
+    }
+  }
+
+  @keyframes size-change-largeSmall {
+    0% {
+      transform: translateX(210%);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
 
   @keyframes cart-appear {
     0% {
