@@ -4,7 +4,7 @@ interface Products {
 
 export const products: Products[] = [
   {
-    Пиццы: "inline-block",
+    Пиццы: "inline-block pizzaScroll off",
     Комбо: "inline-block",
     Закуски: "inline-block",
     Коктейли: "inline-block",
@@ -19,4 +19,18 @@ export const products: Products[] = [
     "На компанию": "inline-block lg:hidden 2xl:inline-block",
     "Любят дети": "inline-block lg:hidden 2xl:inline-block",
   },
+];
+
+export const productsLinks: string[] = [
+  "#pizza",
+  "#pizza",
+  "#snacks",
+  "#pizza",
+  "#pizza",
+  "#pizza",
+  "#pizza",
+  "#pizza",
+  "#pizza",
+  "#pizza",
+  "#pizza",
 ];

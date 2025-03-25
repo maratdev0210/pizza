@@ -39,6 +39,7 @@ export default function PizzaModal({
   const dispatch = useAppDispatch();
 
   const addToCart = () => {
+    setShowModal(false);
     dispatch(
       setOrder({
         type: "pizza",

@@ -1,15 +1,14 @@
-import { products } from "../../types/widgets/header/header";
+import { products, productsLinks } from "../../types/widgets/header/header";
 import logo from "../../../public/logo.svg";
 import OtherProducts from "./helpers/OtherProducts";
 import PizzeriaInfo from "./PizzeriaInfo";
-import CartPopup from "./helpers/CartPopup";
 import { useState } from "react";
 import { useAppSelector } from "../../state/hooks";
 import { selectedCity } from "../../state/slices/citiesSlice";
+import CartButton from "./helpers/CartButton";
 
 export default function Header() {
   const [sticky, setSticky] = useState(false);
-  const [showCart, setShowCart] = useState(false);
   const city = useAppSelector(selectedCity);
 
   window.addEventListener("scroll", () => {
@@ -34,12 +33,12 @@ export default function Header() {
               className={`${sticky ? "ease-in-out translate translate-x-5" : "translate -translate-x-8"} overflow-visible duration-500 flex gap-5`}
             >
               {products.map((product) => {
-                return Object.entries(product).map((product) => {
+                return Object.entries(product).map((product, index) => {
                   return (
                     <li
                       className={`${product[1]} text-black font-semibold text-sm dodo-hover`}
                     >
-                      {product[0]}
+                      <a href={productsLinks[index]}>{product[0]}</a>
                     </li>
                   );
                 });
@@ -47,13 +46,7 @@ export default function Header() {
               <OtherProducts />
             </ul>
           </nav>
-          <button
-            onClick={() => setShowCart(true)}
-            className="bg-orange-500 text-white tracking-wide py-2 rounded-3xl w-25 hover:cursor-pointer hover:transition hover:duration-1000 hover:bg-orange-700/75"
-          >
-            Корзина
-          </button>
-          <CartPopup showCart={showCart} setShowCart={setShowCart} />
+          <CartButton />
         </div>
       </div>
     </>

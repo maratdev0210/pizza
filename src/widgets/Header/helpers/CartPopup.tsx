@@ -1,11 +1,32 @@
 import { X } from "lucide-react";
+import { useAppSelector } from "../../../state/hooks";
+import { selectedOrder } from "../../../state/slices/orderSlice";
+import CartOrder from "./CartOrder";
+import { useState } from "react";
 
 interface CartProps {
   showCart: boolean;
   setShowCart: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+function CartEmpty() {
+  return (
+    <div className="flex flex-col bg-white/95 items-center w-105 justify-center h-[100vh] ">
+      <img
+        className="w-80"
+        src="https://cdn.dodostatic.net/pizza-site/dist/assets/5aa5dac99a832c62f3ef..svg"
+      />
+      <h2 className="mt-6 text-black font-semibold text-xl">Пока тут пусто</h2>
+      <p className="text-center mt-4">Добавьте пиццу. Или две!</p>
+      <p className="text-center mt-0">А мы доставим ваш заказ от 649 ₽</p>
+    </div>
+  );
+}
+
 export default function CartPopup({ showCart, setShowCart }: CartProps) {
+  const [isCartEmpty, setIsCartEmpty] = useState(false);
+  const order = useAppSelector(selectedOrder);
+
   return (
     <>
       <div
@@ -24,17 +45,11 @@ export default function CartPopup({ showCart, setShowCart }: CartProps) {
               />
             </span>
           </div>
-          <div className="flex flex-col bg-white/95 items-center w-105 justify-center h-[100vh] ">
-            <img
-              className="w-80"
-              src="https://cdn.dodostatic.net/pizza-site/dist/assets/5aa5dac99a832c62f3ef..svg"
-            />
-            <h2 className="mt-6 text-black font-semibold text-xl">
-              Пока тут пусто
-            </h2>
-            <p className="text-center mt-4">Добавьте пиццу. Или две!</p>
-            <p className="text-center mt-0">А мы доставим ваш заказ от 649 ₽</p>
-          </div>
+          {order.length - 1 > 0 && isCartEmpty == false ? (
+            <CartOrder setIsCartEmpty={setIsCartEmpty} order={order} />
+          ) : (
+            <CartEmpty />
+          )}
         </div>
       </div>
     </>

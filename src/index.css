@@ -75,6 +75,15 @@
   box-shadow: rgba(6, 5, 50, 0.19) 0px 6px 20px;
 }
 
+/* styling links with intersection observer */
+.on {
+  @apply text-orange-500 transition duration-200 ease-in-out;
+}
+
+.off {
+  @apply transition duration-200 ease-in-out;
+}
+
 @theme {
   --animate-live-pulse: live-pulse 2s ease-in-out infinite;
   --animate-logo-appear: logo-appear 0.5s ease-in-out;
@@ -96,6 +105,28 @@
     forwards;
   --animate-type-change-tradThin: type-change-tradThin 0.2s ease-out forwards;
   --animate-type-change-thinTrad: type-change-thinTrad 0.2s ease-out forwards;
+  --animate-cartArrow-appear: cartArrow-appear 0.2s ease-out forwards;
+  --animate-product-lift: product-lift 1s ease-in-out forwards;
+
+  @keyframes product-lift {
+    0% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-80px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes cartArrow-appear {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(5px);
+    }
+  }
 
   @keyframes type-change-tradThin {
     0% {
