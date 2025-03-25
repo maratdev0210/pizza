@@ -1,5 +1,13 @@
 // Display more information about the pizza
 
+import { useEffect, useState } from "react";
+import ToppingsList from "./ToppingsList";
+import { X } from "lucide-react";
+import SizePicking from "./SizePicking";
+import DoughPicking from "./DoughPicking";
+import { useAppDispatch } from "../../../state/hooks";
+import { setOrder } from "../../../state/slices/orderSlice";
+
 interface IPizzaModal {
   name: string;
   image: string;
@@ -8,10 +16,15 @@ interface IPizzaModal {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-import { useEffect, useState } from "react";
-import ToppingsList from "./ToppingsList";
-import { X } from "lucide-react";
-import SizePicking from "./SizePicking";
+interface IImageScaleRatio {
+  [key: string]: string;
+}
+
+const ImageScaleRatio: IImageScaleRatio = {
+  "25 см": "scale-150",
+  "30 см": "scale-175",
+  "35 см": "scale-200",
+};
 
 export default function PizzaModal({
   name,
@@ -20,7 +33,26 @@ export default function PizzaModal({
   showModal,
   setShowModal,
 }: IPizzaModal) {
-  const [imageScale, setImageScale] = useState<number>(150);
+  const [imageScale, setImageScale] = useState<string>("150");
+  const [size, setSize] = useState<string>("25 см"); // pizza size: 25 | 30 | 35
+  const [doughType, setDoughType] = useState<string>("Традиционное");
+  const dispatch = useAppDispatch();
+
+  const addToCart = () => {
+    dispatch(
+      setOrder({
+        type: "pizza",
+        data: {
+          image: image,
+          name: name,
+          quantity: 1,
+          dough: doughType,
+          size: size,
+          weight: "490",
+        },
+      })
+    );
+  };
 
   useEffect(() => {
     if (showModal) {
@@ -43,19 +75,36 @@ export default function PizzaModal({
             </span>
             <div className="flex justify-center h-[80vh] w-full">
               <div className="flex w-full justify-center items-center rounded-l-2xl rounded-bl-2xl bg-white">
-                <img src={image} className="size-60 scale-200" />
+                <img
+                  src={image}
+                  className={`${ImageScaleRatio[size]} transition duration-300 ease-in-out size-60`}
+                />
               </div>
               <div className="pl-12 pb-2 pr-1 flex flex-col items-center justify-center w-1/2 rounded-r-2xl rounded-br-2xl bg-gray-50">
                 <div className="mt-8 py-8 overflow-auto">
-                  <p className="px-4 font-semibold text-2xl">{name}</p>
+                  <div className="px-4">
+                    <p className="font-semibold text-2xl">{name}</p>
+                    <span className="text-sm text-gray-400">{size}</span>
+                    <span className="text-sm text-gray-400">
+                      {", "} {doughType}
+                    </span>
+                  </div>
+
                   <div className="px-4 mr-12 mt-6">
-                    <SizePicking setImageScale={setImageScale} />
+                    <SizePicking size={size} setSize={setSize} />
+                    <DoughPicking
+                      doughType={doughType}
+                      setDoughType={setDoughType}
+                    />
                   </div>
 
                   <ToppingsList />
                 </div>
                 <div className="mt-8 pb-12 w-full pr-12">
-                  <button className="text-white text-lg rounded-4xl bg-orange-500 w-full py-3 cursor-pointer hover:bg-orange-700/75 hover:transition hover:duration-200">
+                  <button
+                    onClick={() => addToCart()}
+                    className="text-white text-lg rounded-4xl bg-orange-500 w-full py-3 cursor-pointer hover:bg-orange-700/75 hover:transition hover:duration-200"
+                  >
                     В корзину
                   </button>
                 </div>
