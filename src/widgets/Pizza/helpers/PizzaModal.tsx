@@ -33,7 +33,6 @@ export default function PizzaModal({
   showModal,
   setShowModal,
 }: IPizzaModal) {
-  const [imageScale, setImageScale] = useState<string>("150");
   const [size, setSize] = useState<string>("25 см"); // pizza size: 25 | 30 | 35
   const [doughType, setDoughType] = useState<string>("Традиционное");
   const dispatch = useAppDispatch();

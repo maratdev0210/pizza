@@ -22,7 +22,7 @@ export default function Pizza() {
   return (
     <div id="pizza" ref={ref} className="dodo-padding-left mt-40">
       <h2 className="text-black font-bold text-4xl">Пиццы</h2>
-      <div className="flex w-full justify-center gap-8  flex-wrap mt-8">
+      <div className="grid grid-cols-4 mt-8">
         {PIZZAS.map((pizza, index) => {
           return (
             <PizzaCard

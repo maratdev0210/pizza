@@ -52,12 +52,14 @@ function Product({
         <img className="size-18" src={image} alt={name} />
         <div className="w-1/2">
           <p className="text-black font-semibold">{name}</p>
-          <p className="text-gray-400 text-sm">
-            {size}
-            <span>, </span>
-            <span>{dough}</span>
-            <span className="pl-2">тесто</span>
-          </p>
+          {dough && (
+            <p className="text-gray-400 text-sm">
+              {size}
+              <span>, </span>
+              <span>{dough}</span>
+              <span className="pl-2">тесто</span>
+            </p>
+          )}
         </div>
       </div>
       <div className="py-4 flex justify-between">
@@ -116,7 +118,7 @@ export default function CartOrder({ setIsCartEmpty, order }) {
           <span className="pl-2">товар на 1 718 ₽</span>
         </p>
       </div>
-      <div className="mt-8">
+      <div className="mt-8 overflow-auto h-[50vh]">
         {order.slice(1, order.length).map((product) => {
           return (
             <Product
@@ -148,7 +150,7 @@ export default function CartOrder({ setIsCartEmpty, order }) {
             <div className="flex flex-col gap-1">
               <div>
                 <span className="text-sm font-semibold text-black">
-                  {orderSize}
+                  {order.length - 1}
                 </span>
                 <span className="ml-1 text-sm font-semibold text-black inline-block">
                   товара
@@ -174,6 +176,7 @@ export default function CartOrder({ setIsCartEmpty, order }) {
             </div>
           </div>
         </div>
+
         <div className="py-2 flex justify-between items-center">
           <p className="text font-semibold text-black">Сумма заказа</p>
           <p className="text font-semibold text-black">1 718 ₽</p>

@@ -4,9 +4,9 @@ interface Products {
 
 export const products: Products[] = [
   {
-    Пиццы: "inline-block pizzaScroll off",
+    Пиццы: "inline-block pizzaScroll scroll off",
     Комбо: "inline-block",
-    Закуски: "inline-block",
+    Закуски: "inline-block snackScroll scroll off",
     Коктейли: "inline-block",
     Кофе: "inline-block",
     Напитки: "inline-block",
