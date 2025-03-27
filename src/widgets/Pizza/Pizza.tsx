@@ -4,6 +4,7 @@ import PizzaCard from "./helpers/PizzaCard";
 import { PIZZAS } from "../../types/pizzas/pizzas";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import ProductCard from "../../features/Product/ProductCard";
 
 export default function Pizza() {
   const { ref, inView } = useInView({
@@ -25,11 +26,12 @@ export default function Pizza() {
       <div className="grid grid-cols-4 mt-8">
         {PIZZAS.map((pizza, index) => {
           return (
-            <PizzaCard
+            <ProductCard
+              type="pizza"
               key={index}
               name={pizza.name}
               image={pizza.src}
-              ingridients={pizza.ingridients}
+              ingridients={pizza.ingridients[0]}
             />
           );
         })}

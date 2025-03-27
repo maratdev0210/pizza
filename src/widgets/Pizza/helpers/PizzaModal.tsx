@@ -11,7 +11,7 @@ import { setOrder } from "../../../state/slices/orderSlice";
 interface IPizzaModal {
   name: string;
   image: string;
-  ingridients: string[];
+  ingridients: string;
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }

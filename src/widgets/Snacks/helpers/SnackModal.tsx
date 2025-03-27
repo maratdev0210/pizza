@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { X } from "lucide-react";
 import { useAppDispatch } from "../../../state/hooks";
 import { setOrder } from "../../../state/slices/orderSlice";
+import { setIsOrdered } from "../../../state/slices/isOrderedSlice";
 
 interface ISnackModal {
   name: string;
@@ -30,6 +31,7 @@ export default function SnackModal({
 
   const addToCart = () => {
     setShowModal(false);
+    dispatch(setIsOrdered(true));
     dispatch(
       setOrder({
         type: "snacks",

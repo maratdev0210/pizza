@@ -12,7 +12,7 @@ export default function Header() {
   const city = useAppSelector(selectedCity);
 
   window.addEventListener("scroll", () => {
-    setSticky(window.scrollY >= 100);
+    setSticky(window.scrollY >= 120);
   });
 
   return (

@@ -2,6 +2,7 @@ import { SNACKS } from "../../types/snacks/snacks";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import SnackCard from "./helpers/SnackCard";
+import ProductCard from "../../features/Product/ProductCard";
 
 export default function Snacks() {
   const { ref, inView } = useInView({

@@ -1,5 +1,5 @@
 import CartPopup from "./CartPopup";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAppSelector } from "../../../state/hooks";
 import { selectedOrder } from "../../../state/slices/orderSlice";
 import CartArrow from "../../../assets/CartArrow";
