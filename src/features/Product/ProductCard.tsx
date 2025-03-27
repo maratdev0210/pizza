@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAppDispatch } from "../../state/hooks";
 import { setOrder } from "../../state/slices/orderSlice";
 import NewItem from "../../assets/NewItem";
+import ProductModal from "./ProductModal";
 
 interface IProductCard {
   type: string; // | Snacks | Drink, etc.
@@ -75,6 +76,14 @@ export default function ProductCard({
           </div>
         </div>
       </div>
+      <ProductModal
+        type={type}
+        name={name}
+        ingridients={ingridients}
+        image={image}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </>
   );
 }

@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { X } from "lucide-react";
-import { useAppDispatch } from "../../../state/hooks";
-import { setOrder } from "../../../state/slices/orderSlice";
-import { setIsOrdered } from "../../../state/slices/isOrderedSlice";
+import { useAppDispatch } from "../../state/hooks";
+import { setOrder } from "../../state/slices/orderSlice";
+import { setIsOrdered } from "../../state/slices/isOrderedSlice";
 
-interface ISnackModal {
+interface IProductModal {
+  type: string;
   name: string;
   image: string;
   ingridients: string;
@@ -12,13 +13,14 @@ interface ISnackModal {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function SnackModal({
+export default function ProductModal({
+  type,
   name,
   image,
   ingridients,
   showModal,
   setShowModal,
-}: ISnackModal) {
+}: IProductModal) {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -34,7 +36,7 @@ export default function SnackModal({
     dispatch(setIsOrdered(true));
     dispatch(
       setOrder({
-        type: "snacks",
+        type: type,
         data: {
           image: image,
           name: name,

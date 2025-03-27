@@ -3,10 +3,9 @@ import { RootState } from "../state";
 
 // User's order
 // type -> pizza | snacks | combo | Cocktails | Drinks | Desserts | Sauces -> etc
-type product = "pizza" | "snacks" | "combo" | "cocktails" | "drinks" | null;
 
 interface OrderState {
-  type: product;
+  type: string;
   data: {
     image: string;
     name: string;
@@ -20,7 +19,7 @@ interface OrderState {
 const initialState: { orderState: OrderState[] } = {
   orderState: [
     {
-      type: null,
+      type: "",
       data: {
         image: "",
         name: "",
