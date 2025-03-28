@@ -1,6 +1,9 @@
 import { SNACKS } from "../snacks/snacks";
 import { COCKTAILS } from "../cocktails/cocktails";
 import { COFFEE } from "../coffee/coffee";
+import { DRINKS } from "../drinks/drinks";
+import { DESSERTS } from "../desserts/desserts";
+import { SAUCES } from "../sauces/sauces";
 
 export const PRODUCTS = [
   {
@@ -25,6 +28,30 @@ export const PRODUCTS = [
       classLink: ".coffeeScroll",
       productName: "Кофе",
       productId: "coffee",
+    },
+  },
+  {
+    products: DRINKS,
+    data: {
+      classLink: ".drinkScroll",
+      productName: "Напитки",
+      productId: "drinks",
+    },
+  },
+  {
+    products: DESSERTS,
+    data: {
+      classLink: ".dessertScroll",
+      productName: "Десерты",
+      productId: "desserts",
+    },
+  },
+  {
+    products: SAUCES,
+    data: {
+      classLink: ".sauceScroll",
+      productName: "Соусы",
+      productId: "sauces",
     },
   },
 ];
