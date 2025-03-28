@@ -7,6 +7,8 @@ import SizePicking from "./SizePicking";
 import DoughPicking from "./DoughPicking";
 import { useAppDispatch } from "../../../state/hooks";
 import { setOrder } from "../../../state/slices/orderSlice";
+import LearnMore from "../../../assets/LearnMore";
+import ProductInfo from "../../../features/Product/ProductInfo";
 
 interface IPizzaModal {
   name: string;
@@ -35,6 +37,7 @@ export default function PizzaModal({
 }: IPizzaModal) {
   const [size, setSize] = useState<string>("25 см"); // pizza size: 25 | 30 | 35
   const [doughType, setDoughType] = useState<string>("Традиционное");
+  const [showProductInfo, setShowProductInfo] = useState(false);
   const dispatch = useAppDispatch();
 
   const addToCart = () => {
@@ -83,7 +86,21 @@ export default function PizzaModal({
               <div className="pl-12 pb-2 pr-1 flex flex-col items-center justify-center w-1/2 rounded-r-2xl rounded-br-2xl bg-gray-50">
                 <div className="mt-8 py-8 overflow-auto">
                   <div className="px-4">
-                    <p className="font-semibold text-2xl">{name}</p>
+                    <div className="flex justify-between relative">
+                      <p className="font-semibold text-2xl">{name}</p>
+                      <button
+                        onClick={() => setShowProductInfo(true)}
+                        className="cursor-pointer hover:transition hover:scale-110 hover:duration-200"
+                      >
+                        <LearnMore />
+                      </button>
+
+                      <ProductInfo
+                        showModal={showProductInfo}
+                        setShowModal={setShowProductInfo}
+                      />
+                    </div>
+
                     <span className="text-sm text-gray-400">{size}</span>
                     <span className="text-sm text-gray-400">
                       {", "} {doughType}

@@ -1,8 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { useAppDispatch } from "../../state/hooks";
 import { setOrder } from "../../state/slices/orderSlice";
 import { setIsOrdered } from "../../state/slices/isOrderedSlice";
+import LearnMore from "../../assets/LearnMore";
+import ProductInfo from "./ProductInfo";
 
 interface IProductModal {
   type: string;
@@ -22,6 +24,7 @@ export default function ProductModal({
   setShowModal,
 }: IProductModal) {
   const dispatch = useAppDispatch();
+  const [showProductInfo, setShowProductInfo] = useState(false);
 
   useEffect(() => {
     if (showModal) {
@@ -57,7 +60,20 @@ export default function ProductModal({
             </div>
             <div className="p-6 rounded-3xl bg-gray-100 w-2/5 rounded-l-none flex flex-col justify-between">
               <div>
-                <p className="text-2xl font-semibold text-black">{name}</p>
+                <div className="flex justify-between relative">
+                  <p className="text-2xl font-semibold text-black">{name}</p>
+                  <button
+                    onClick={() => setShowProductInfo(!showProductInfo)}
+                    className="cursor-pointer hover:transition hover:scale-110 hover:duration-200"
+                  >
+                    <LearnMore />
+                  </button>
+                  <ProductInfo
+                    showModal={showProductInfo}
+                    setShowModal={setShowProductInfo}
+                  />
+                </div>
+
                 <p className="text-gray-400 text mt-1">1 шт, 110г</p>
                 <p className="text-sm mt-2">{ingridients}</p>
                 <button className="rounded-3xl bg-gray-200 w-full text-sm py-1 mt-4 cursor-pointer">

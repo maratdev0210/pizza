@@ -67,12 +67,21 @@ export default function ProductCard({
         <div className="pt-8">
           <div className="flex justify-between items-center">
             <span className="font-semibold">от 219 ₽</span>
-            <button
-              onClick={() => addToCart()}
-              className="text-orange-500 cursor-pointer font-semibold bg-orange-200/25 hover:transition hover:duration-200 hover:bg-orange-200/50 px-2 py-2 rounded-4xl w-28"
-            >
-              В корзину
-            </button>
+            {isOutOfStock ? (
+              <button
+                className="font-semibold bg-gray-200 text-gray-500 px-2 py-2 rounded-4xl w-28 cursor-not-allowed"
+                disabled
+              >
+                Раскупили
+              </button>
+            ) : (
+              <button
+                onClick={() => addToCart()}
+                className="text-orange-500 cursor-pointer font-semibold bg-orange-200/25 hover:transition hover:duration-200 hover:bg-orange-200/50 px-2 py-2 rounded-4xl w-28"
+              >
+                В корзину
+              </button>
+            )}
           </div>
         </div>
       </div>
